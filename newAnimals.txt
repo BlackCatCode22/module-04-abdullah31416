@@ -1,0 +1,52 @@
+Species	Name	Age
+Hyena	Shenzi	0
+Hyena	Banzai	0
+Hyena	Ed	0
+Hyena	Zig	0
+Hyena	Bud	0
+Hyena	Lou	0
+Hyena	Kamari	0
+Hyena	Wema	0
+Hyena	Nne	0
+Hyena	Madoa	0
+Hyena	Prince Nevarah	0
+Lion	Scar	0
+Lion	Mufasa	0
+Lion	Simba	0
+Lion	Kiara	0
+Lion	King	0
+Lion	Drooper	0
+Lion	Kimba	0
+Lion	Nala	0
+Lion	Leo	0
+Lion	Samson	0
+Lion	Elsa	0
+Lion	Cecil	0
+Bear	Yogi	0
+Bear	Smokey	0
+Bear	Paddington	0
+Bear	Lippy	0
+Bear	Bungle	0
+Bear	Baloo	0
+Bear	Rupert	0
+Bear	Winnie the Pooh	0
+Bear	Snuggles	0
+Bear	Bert	0
+Tiger	Tony	0
+Tiger	Tigger	0
+Tiger	Amber	0
+Tiger	Cosimia	0
+Tiger	Cuddles	0
+Tiger	Dave	0
+Tiger	Jiba	0
+Tiger	Rajah	0
+Tiger	Rayas	0
+Tiger	Ryker	0
+
+
+Species Count:
+
+Hyena: 11
+Lion: 12
+Bear: 10
+Tiger: 10
