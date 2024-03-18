@@ -1,0 +1,35 @@
+Overview of Design:
+
+Animal  Class:
+
+represents general animal characteristics like name, age, and species.
+Uses private instance variables to encapsulate data and offers getter and setter methods for data access and modification.
+Subclasses (Bear, Tiger, Lion, and Hyena):
+
+To represent particular animal species, extend the 'Animal' class.
+Additional characteristics unique to the corresponding animal type (such as color, weight, birth season, or origin) may be present in each subclass. Nevertheless, these attributes are not used in the code that is provided.
+Main Class:
+
+includes the primary method, which initiates program execution.
+reads information from 'arrivingAnimals.txt' and 'animalNames.txt'.
+counts the number of animals in each species and creates animal objects based on the data processing.
+creates a report by adding the species count and animal information to the 'newAnimals.txt' file.
+
+Specifics of Implementation:
+
+Reading Data:
+
+divides each line into pertinent sections to extract required data, like species, name, age, etc.
+uses the extracted data to create 'Animal' objects, which are then added to the 'ArrayList<Animal>'.
+Counting Species:
+
+counts the animals in each species by using a HashMap<String, Integar>'('speciesCount').
+Iteratively traverses the animal list, increasing the count for every species come across.
+Creation of Reports:
+
+uses 'BufferedWriter' to write the species count and animal data to the 'newAnimals.txt' file.
+formats the report by first adding headers for the species, name, and age, and then inserting the animal data itself.
+
+Managing Exceptions:
+
+handles 'IOExceptions' that may arise during file operations like reading and writing by using try-catch blocks.
