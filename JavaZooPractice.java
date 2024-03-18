@@ -1,5 +1,5 @@
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 class Animal {
     private String name;
@@ -12,24 +12,25 @@ class Animal {
         this.species = species;
     }
 
+    // Getters and Setters
     public String getName() {
         return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getSpecies() {
-        return species;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getSpecies() {
+        return species;
     }
 
     public void setSpecies(String species) {
@@ -38,127 +39,59 @@ class Animal {
 }
 
 class Hyena extends Animal {
-    private String uniqueFeature;
+    private String color;
+    private int weight;
+    private String birthSeason;
+    private String origin;
 
-    public Hyena(String name, int age, String species, String uniqueFeature) {
-        super(name, age, species);
-        this.uniqueFeature = uniqueFeature;
+    public Hyena(String name, int age, String color, int weight, String birthSeason, String origin) {
+        super(name, age, "Hyena");
+        this.color = color;
+        this.weight = weight;
+        this.birthSeason = birthSeason;
+        this.origin = origin;
     }
 
-    public String getUniqueFeature() {
-        return uniqueFeature;
-    }
-
-    public void setUniqueFeature(String uniqueFeature) {
-        this.uniqueFeature = uniqueFeature;
-    }
+    // Getters and Setters for Hyena specific attributes
 }
 
 class Lion extends Animal {
-    private String uniqueFeature;
-
-    public Lion(String name, int age, String species, String uniqueFeature) {
-        super(name, age, species);
-        this.uniqueFeature = uniqueFeature;
-    }
-
-    public String getUniqueFeature() {
-        return uniqueFeature;
-    }
-
-    public void setUniqueFeature(String uniqueFeature) {
-        this.uniqueFeature = uniqueFeature;
-    }
+    // Similar to Hyena, but with Lion-specific attributes
 }
 
 class Tiger extends Animal {
-    private String uniqueFeature;
-
-    public Tiger(String name, int age, String species, String uniqueFeature) {
-        super(name, age, species);
-        this.uniqueFeature = uniqueFeature;
-    }
-
-    public String getUniqueFeature() {
-        return uniqueFeature;
-    }
-
-    public void setUniqueFeature(String uniqueFeature) {
-        this.uniqueFeature = uniqueFeature;
-    }
+    // Similar to Hyena, but with Tiger-specific attributes
 }
 
 class Bear extends Animal {
-    private String uniqueFeature;
-
-    public Bear(String name, int age, String species, String uniqueFeature) {
-        super(name, age, species);
-        this.uniqueFeature = uniqueFeature;
-    }
-
-    public String getUniqueFeature() {
-        return uniqueFeature;
-    }
-
-    public void setUniqueFeature(String uniqueFeature) {
-        this.uniqueFeature = uniqueFeature;
-    }
+    // Similar to Hyena, but with Bear-specific attributes
 }
 
-public class AnimalReport {
+public class Main {
     public static void main(String[] args) {
+        // Creating ArrayList for storing animal instances
         ArrayList<Animal> animals = new ArrayList<>();
+
+        // Creating HashMap for counting species
         HashMap<String, Integer> speciesCount = new HashMap<>();
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("arrivingAnimals.txt"));
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                String name = parts[0];
-                int age = Integer.parseInt(parts[1]);
-                String species = parts[2];
-                String uniqueFeature = parts[3];
+        // Adding animal instances to ArrayList and counting species
+        // Example:
+        animals.add(new Hyena("Shenzi", 4, "tan", 70, "spring", "Friguia Park, Tunisia"));
+        animals.add(new Lion("Scar", 12, "dark tan", 375, "winter", "KopeLion, Tanzania"));
+        animals.add(new Tiger("Tony", 2, "gold and tan stripes", 270, "spring", "Dhaka, Bangladesh"));
+        animals.add(new Bear("Yogi", 7, "brown", 320, "spring", "Alaska Zoo, Alaska"));
 
-                Animal animal;
-                switch (species) {
-                    case "Hyena":
-                        animal = new Hyena(name, age, species, uniqueFeature);
-                        break;
-                    case "Lion":
-                        animal = new Lion(name, age, species, uniqueFeature);
-                        break;
-                    case "Tiger":
-                        animal = new Tiger(name, age, species, uniqueFeature);
-                        break;
-                    case "Bear":
-                        animal = new Bear(name, age, species, uniqueFeature);
-                        break;
-                    default:
-                        animal = new Animal(name, age, species);
-                }
-
-                animals.add(animal);
-
-                speciesCount.put(species, speciesCount.getOrDefault(species, 0) + 1);
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (Animal animal : animals) {
+            // Counting species
+            speciesCount.put(animal.getSpecies(), speciesCount.getOrDefault(animal.getSpecies(), 0) + 1);
         }
 
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("newAnimals.txt"));
-            for (Animal animal : animals) {
-                bw.write(animal.getSpecies() + ": " + animal.getName() + ", " + animal.getAge() + ", " + ((animal instanceof Hyena) ? ((Hyena) animal).getUniqueFeature() : "") + "\n");
-            }
-
-            for (Map.Entry<String, Integer> entry : speciesCount.entrySet()) {
-                bw.write(entry.getKey() + ": " + entry.getValue() + "\n");
-            }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        // Printing species count
+        System.out.println("Species count:");
+        for (String species : speciesCount.keySet()) {
+            System.out.println(species + ": " + speciesCount.get(species));
         }
     }
 }
+
